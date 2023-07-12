@@ -1,4 +1,4 @@
-FROM mdillon/postgis:10-alpine
+FROM postgis/postgis:12-3.0
 
 USER root
 
