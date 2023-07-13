@@ -1,7 +1,9 @@
 FROM postgis/postgis:12-3.0
 
-USER 1001
+USER root
 
-RUN chgrp root /var/lib/postgresql/
+RUN usermod -aG sudo postgres
+
+RUN chown postgres:0 -R ${PGDATA}
 
 USER postgres
