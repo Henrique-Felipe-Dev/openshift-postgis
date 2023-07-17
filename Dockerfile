@@ -1,5 +1,7 @@
 FROM postgis/postgis:12-3.0
 
-USER 1001
+USER root
 
-ENV RUNTIME_USER_NAME=okduser
+RUN chown 1001:0 -R ${PGDATA}
+
+USER 1001
