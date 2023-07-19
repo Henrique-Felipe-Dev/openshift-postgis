@@ -1,5 +1,9 @@
 FROM ubuntu:latest
 
+USER root
+
+RUN chgrp root -R /
+
 USER 1001
 
 CMD ["bash"]
