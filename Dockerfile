@@ -1,3 +1,5 @@
+FROM alpine:latest
+
 USER 1001
 
 CMD ["bash"]
