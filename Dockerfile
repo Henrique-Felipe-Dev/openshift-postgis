@@ -35,7 +35,7 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 STOPSIGNAL SIGINT
 EXPOSE 5432
 CMD ["postgres"]
-LABEL maintainer=PostGIS Project - https://postgis.net
+LABEL maintainer=PostGIS
 ENV POSTGIS_MAJOR=3
 ENV POSTGIS_VERSION=3.0.3+dfsg-2.pgdg100+1
 RUN apt-get update  \
