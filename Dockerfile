@@ -1,10 +1,4 @@
-FROM ubuntu:latest
-
-USER root
-
-RUN chgrp root -R /
-
-USER 1001
+FROM debian:10
 
 CMD ["bash"]
 RUN set -ex; if ! command -v gpg > /dev/null; then apt-get update; apt-get install -y --no-install-recommends gnupg dirmngr ; rm -rf /var/lib/apt/lists/*; fi
@@ -36,7 +30,12 @@ COPY file:319b7406843f62370047c33da3dd702120d7eec161b31772aa6de0f02a6b3a94 in /u
 	usr/local/bin/
 	usr/local/bin/docker-entrypoint.sh
 
-RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
+RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat	
+
+RUN /bin/sh -c chgrp -R root  /etc/init.d/postgresql  /etc/postgresql  /usr/lib/postgresql  /usr/share/postgresql  /var/lib/postgresql   /var/cache/postgresql  /var/log/postgresql      /run  /certs  /docker     &&  chmod -R g=u  /etc/init.d/postgresql  /etc/postgresql  /usr/lib/postgresql  /usr/share/postgresql  /var/lib/postgresql   /var/cache/postgresql  /var/log/postgresql          /run  /docker /etc/passwd     &&  chmod 0750 /certs     &&  chmod 0640 /certs/* # buildkit
+
+USER 1001
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 STOPSIGNAL SIGINT
 EXPOSE 5432
