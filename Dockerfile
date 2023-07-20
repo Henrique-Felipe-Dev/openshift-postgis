@@ -28,7 +28,7 @@ COPY file:319b7406843f62370047c33da3dd702120d7eec161b31772aa6de0f02a6b3a94 in /u
 	usr/
 	usr/local/
 	usr/local/bin/
-	usr/local/bin/docker-entrypoint.sh	
+	usr/local/bin/docker-entrypoint.sh
 
 RUN /bin/sh -c chgrp -R root  /etc/init.d/postgresql  /etc/postgresql  /usr/lib/postgresql  /usr/share/postgresql  /var/lib/postgresql   /var/cache/postgresql  /var/log/postgresql      /run  /certs  /docker     &&  chmod -R g=u  /etc/init.d/postgresql  /etc/postgresql  /usr/lib/postgresql  /usr/share/postgresql  /var/lib/postgresql   /var/cache/postgresql  /var/log/postgresql          /run  /docker /etc/passwd     &&  chmod 0750 /certs     &&  chmod 0640 /certs/* # buildkit
 
