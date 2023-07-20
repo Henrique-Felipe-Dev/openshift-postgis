@@ -1,4 +1,4 @@
-FROM debian
+FROM registry.redhat.io/ubi8/ubi
 
 CMD ["bash"]
 RUN rm -rf /etc/apt/trusted.gpg.d/*
