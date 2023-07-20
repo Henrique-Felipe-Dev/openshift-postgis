@@ -1,8 +1,6 @@
-FROM ubuntu:latest
+FROM debian
 
 CMD ["bash"]
-RUN echo "Acquire::http::proxy \"http://<proxy_server>:<port>/\";" >> /etc/apt/apt.conf
-RUN echo "Acquire::https::proxy \"https://<proxy_server>:<port>/\";" >> /etc/apt/apt.conf
 RUN set -ex; if ! command -v gpg > /dev/null; then apt-get update; apt-get install gnupg dirmngr ; rm -rf /var/lib/apt/lists/*; fi
 RUN set -eux; groupadd -r postgres --gid=999; useradd -r -g postgres --uid=999 --home-dir=/var/lib/postgresql --shell=/bin/bash postgres; mkdir -p /var/lib/postgresql; chown -R postgres:postgres /var/lib/postgresql
 ENV GOSU_VERSION=1.12
